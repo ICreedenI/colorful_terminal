@@ -9,7 +9,6 @@
 # pip install -e .
 
 
-
 # twine upload dist/*
 # twine upload --skip-existing dist/*
 # twine upload --verbose --skip-existing dist/*
@@ -24,8 +23,10 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.0.2'
-DESCRIPTION = 'Print with color, style your output and take full control of your terminal.'
+VERSION = "0.0.3"
+DESCRIPTION = (
+    "Print with color, style your output and take full control of your terminal."
+)
 
 # Setting up
 setup(
@@ -39,7 +40,18 @@ setup(
     long_description=long_description,
     packages=find_packages(),
     install_requires=[],
-    keywords=['python', 'print', 'color', 'colour', 'colored', 'coloured', 'rainbow', 'terminal', "console", "colorama"],
+    keywords=[
+        "python",
+        "print",
+        "color",
+        "colour",
+        "colored",
+        "coloured",
+        "rainbow",
+        "terminal",
+        "console",
+        "colorama",
+    ],
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Environment :: Console",
@@ -50,5 +62,5 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: Microsoft :: Windows",
         "Topic :: Terminals",
-    ]
+    ],
 )
