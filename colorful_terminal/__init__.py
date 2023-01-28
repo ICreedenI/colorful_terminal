@@ -10,6 +10,7 @@ from .definitions import (
     style_demo,
     rgb_demo,
     rainbow_demo,
+    reprint_last_line,
 )
 
 __version__ = "0.0.3"

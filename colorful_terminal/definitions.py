@@ -787,6 +787,12 @@ This module allows a wider range of colors ... if your output can display it.
     termact_demo()
 
 
+def reprint_last_line(*args):
+    nargs = [str(a) for a in args]
+    sargs = " ".join(nargs)
+    colored_print(f"{TermAct.Cursor_Previous_Line}\r{TermAct.Erase_in_Line()}{sargs}")
+
+
 if __name__ == "__main__":
 
     demo_print()
