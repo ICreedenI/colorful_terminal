@@ -489,7 +489,7 @@ class TerminalActions:
     def clear_previous_line_action(self, amount: int = 1):
         for i in range(amount):
             print(self.cursor_up, end="")
-            self.clear_current_line()
+            self.clear_current_line_action()
 
 
 Fore = ForegroundColor()
