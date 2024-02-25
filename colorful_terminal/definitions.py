@@ -1,67 +1,67 @@
-# https://en.wikipedia.org/wiki/ANSI_escape_code
-import sys
+# get more infos about ANSI escape codes at: https://en.wikipedia.org/wiki/ANSI_escape_code
 import os
+import sys
 
 
-def Select_Graphic_Rendition(code=0):
+def select_graphic_rendition(code=0):
     """Sets colors and style of the characters following this code."""
     return f"\033[{code}m"
 
 
-def SGR_Reset():
+def sgr_reset():
     """Resets colors and style of the characters following this code."""
     return f"\033[{0}m"
 
 
-def Select_RGB_Foreground_Color(r, g, b):
+def select_rgb_foreground_color(r, g, b):
     """"""
     return f"\033[38;2;{r};{g};{b}m"
 
 
-def Select_RGB_Background_Color(r, g, b):
+def select_rgb_background_color(r, g, b):
     """"""
     return f"\033[48;2;{r};{g};{b}m"
 
 
-def Select_256_Foreground_Color(number):
+def select_256_foreground_color(number):
     """"""
     return f"\033[38;5;{number}m"
 
 
-def Select_256_Background_Color(number):
+def select_256_background_color(number):
     """"""
     return f"\033[48;5;{number}m"
 
 
 class ForegroundColor:
-    BLACK = Select_Graphic_Rendition(30)
-    RED = Select_Graphic_Rendition(31)
-    GREEN = Select_Graphic_Rendition(32)
-    YELLOW = Select_Graphic_Rendition(33)
-    BLUE = Select_Graphic_Rendition(34)
-    MAGENTA = Select_Graphic_Rendition(35)
-    CYAN = Select_Graphic_Rendition(36)
-    WHITE = Select_Graphic_Rendition(37)
-    RESET = Select_Graphic_Rendition(39)
+    BLACK = select_graphic_rendition(30)
+    RED = select_graphic_rendition(31)
+    GREEN = select_graphic_rendition(32)
+    YELLOW = select_graphic_rendition(33)
+    BLUE = select_graphic_rendition(34)
+    MAGENTA = select_graphic_rendition(35)
+    CYAN = select_graphic_rendition(36)
+    WHITE = select_graphic_rendition(37)
+    RESET = select_graphic_rendition(39)
     # These are fairly well supported, but not part) of the standard.
-    BRIGHT_BLACK = Select_Graphic_Rendition(90)
-    BRIGHT_RED = Select_Graphic_Rendition(91)
-    BRIGHT_GREEN = Select_Graphic_Rendition(92)
-    BRIGHT_YELLOW = Select_Graphic_Rendition(93)
-    BRIGHT_BLUE = Select_Graphic_Rendition(94)
-    BRIGHT_MAGENTA = Select_Graphic_Rendition(95)
-    BRIGHT_CYAN = Select_Graphic_Rendition(96)
-    BRIGHT_WHITE = Select_Graphic_Rendition(97)
+    BRIGHT_BLACK = select_graphic_rendition(90)
+    BRIGHT_RED = select_graphic_rendition(91)
+    BRIGHT_GREEN = select_graphic_rendition(92)
+    BRIGHT_YELLOW = select_graphic_rendition(93)
+    BRIGHT_BLUE = select_graphic_rendition(94)
+    BRIGHT_MAGENTA = select_graphic_rendition(95)
+    BRIGHT_CYAN = select_graphic_rendition(96)
+    BRIGHT_WHITE = select_graphic_rendition(97)
 
-    INTENSE_BLACK = Select_RGB_Foreground_Color(0, 0, 0)
-    INTENSE_WHITE = Select_RGB_Foreground_Color(255, 255, 255)
+    INTENSE_BLACK = select_rgb_foreground_color(0, 0, 0)
+    INTENSE_WHITE = select_rgb_foreground_color(255, 255, 255)
 
-    NEON_RED = Select_RGB_Foreground_Color(255, 0, 0)
-    NEON_GREEN = Select_RGB_Foreground_Color(0, 255, 0)
-    NEON_BLUE = Select_RGB_Foreground_Color(0, 0, 255)
-    NEON_YELLOW = Select_RGB_Foreground_Color(255, 255, 0)
-    NEON_MAGENTA = Select_RGB_Foreground_Color(255, 0, 255)
-    NEON_CYAN = Select_RGB_Foreground_Color(0, 255, 255)
+    NEON_RED = select_rgb_foreground_color(255, 0, 0)
+    NEON_GREEN = select_rgb_foreground_color(0, 255, 0)
+    NEON_BLUE = select_rgb_foreground_color(0, 0, 255)
+    NEON_YELLOW = select_rgb_foreground_color(255, 255, 0)
+    NEON_MAGENTA = select_rgb_foreground_color(255, 0, 255)
+    NEON_CYAN = select_rgb_foreground_color(0, 255, 255)
 
     def rgb(self, red: int = 0, green: int = 0, blue: int = 0):
         """Choose the color with the rgb channels.
@@ -91,7 +91,7 @@ class ForegroundColor:
             raise ValueError(
                 "blue needs to be an integer from 0 to 255 including both end points."
             )
-        return Select_RGB_Foreground_Color(red, green, blue)
+        return select_rgb_foreground_color(red, green, blue)
 
     def color_mode_256(self, number):
         """Choose from the 256-color lookup table.
@@ -109,7 +109,7 @@ class ForegroundColor:
             raise ValueError(
                 "number of color_mode_256 needs to be between 0 and 255 including both end points."
             )
-        return Select_256_Foreground_Color(number)
+        return select_256_foreground_color(number)
 
     def color_mode_256_demo(self, colors_per_line: int = 32, spacing: int = 2):
         """Prints every of the possible colors in the 256-color lookup table. So you don't have to open your browser to know which number you need for which color.
@@ -188,34 +188,34 @@ class ForegroundColor:
 
 
 class BackroundColor:
-    BLACK = Select_Graphic_Rendition(40)
-    RED = Select_Graphic_Rendition(41)
-    GREEN = Select_Graphic_Rendition(42)
-    YELLOW = Select_Graphic_Rendition(43)
-    BLUE = Select_Graphic_Rendition(44)
-    MAGENTA = Select_Graphic_Rendition(45)
-    CYAN = Select_Graphic_Rendition(46)
-    WHITE = Select_Graphic_Rendition(47)
-    RESET = Select_Graphic_Rendition(49)
+    BLACK = select_graphic_rendition(40)
+    RED = select_graphic_rendition(41)
+    GREEN = select_graphic_rendition(42)
+    YELLOW = select_graphic_rendition(43)
+    BLUE = select_graphic_rendition(44)
+    MAGENTA = select_graphic_rendition(45)
+    CYAN = select_graphic_rendition(46)
+    WHITE = select_graphic_rendition(47)
+    RESET = select_graphic_rendition(49)
     # These are fairly well supported, but not part) of the standard.
-    BRIGHT_BLACK = Select_Graphic_Rendition(100)
-    BRIGHT_RED = Select_Graphic_Rendition(101)
-    BRIGHT_GREEN = Select_Graphic_Rendition(102)
-    BRIGHT_YELLOW = Select_Graphic_Rendition(103)
-    BRIGHT_BLUE = Select_Graphic_Rendition(104)
-    BRIGHT_MAGENTA = Select_Graphic_Rendition(105)
-    BRIGHT_CYAN = Select_Graphic_Rendition(106)
-    BRIGHT_WHITE = Select_Graphic_Rendition(107)
+    BRIGHT_BLACK = select_graphic_rendition(100)
+    BRIGHT_RED = select_graphic_rendition(101)
+    BRIGHT_GREEN = select_graphic_rendition(102)
+    BRIGHT_YELLOW = select_graphic_rendition(103)
+    BRIGHT_BLUE = select_graphic_rendition(104)
+    BRIGHT_MAGENTA = select_graphic_rendition(105)
+    BRIGHT_CYAN = select_graphic_rendition(106)
+    BRIGHT_WHITE = select_graphic_rendition(107)
 
-    INTENSE_BLACK = Select_RGB_Background_Color(0, 0, 0)
-    INTENSE_WHITE = Select_RGB_Background_Color(255, 255, 255)
+    INTENSE_BLACK = select_rgb_background_color(0, 0, 0)
+    INTENSE_WHITE = select_rgb_background_color(255, 255, 255)
 
-    NEON_RED = Select_RGB_Background_Color(255, 0, 0)
-    NEON_GREEN = Select_RGB_Background_Color(0, 255, 0)
-    NEON_BLUE = Select_RGB_Background_Color(0, 0, 255)
-    NEON_YELLOW = Select_RGB_Background_Color(255, 255, 0)
-    NEON_MAGENTA = Select_RGB_Background_Color(255, 0, 255)
-    NEON_CYAN = Select_RGB_Background_Color(0, 255, 255)
+    NEON_RED = select_rgb_background_color(255, 0, 0)
+    NEON_GREEN = select_rgb_background_color(0, 255, 0)
+    NEON_BLUE = select_rgb_background_color(0, 0, 255)
+    NEON_YELLOW = select_rgb_background_color(255, 255, 0)
+    NEON_MAGENTA = select_rgb_background_color(255, 0, 255)
+    NEON_CYAN = select_rgb_background_color(0, 255, 255)
 
     def rgb(self, red: int = 0, green: int = 0, blue: int = 0):
         """Choose the color with the rgb channels.
@@ -245,7 +245,7 @@ class BackroundColor:
             raise ValueError(
                 "blue needs to be an integer from 0 to 255 including both end points."
             )
-        return Select_RGB_Background_Color(red, green, blue)
+        return select_rgb_background_color(red, green, blue)
 
     def color_mode_256(self, number):
         """Choose from the 256-color lookup table.
@@ -263,7 +263,7 @@ class BackroundColor:
             raise ValueError(
                 "number of color_mode_256 needs to be between 0 and 255 including both end points."
             )
-        return Select_256_Background_Color(number)
+        return select_256_background_color(number)
 
     def color_mode_256_demo(self, colors_per_line: int = 32, spacing: int = 2):
         """Prints every of the possible colors in the 256-color lookup table. So you don't have to open your browser to know which number you need for which color.
@@ -339,22 +339,22 @@ class BackroundColor:
 
 
 class Styling:
-    RESET_ALL = Select_Graphic_Rendition(0)
-    BOLD = Select_Graphic_Rendition(1)
-    DIM = Select_Graphic_Rendition(2)
-    ITALIC = Select_Graphic_Rendition(3)
-    UNDERLINED = Select_Graphic_Rendition(4)
-    CORSSED_OUT = Select_Graphic_Rendition(9)
-    NORMAL = NOT_BOLD = Select_Graphic_Rendition(22)
-    NOT_ITALIC = NOT_BLACKLETTER = Select_Graphic_Rendition(23)
-    DOUBLY_UNDERLINED = Select_Graphic_Rendition(21)
-    NOT_UNDERLINED = Select_Graphic_Rendition(24)
-    NOT_CORSSED_OUT = Select_Graphic_Rendition(29)
-    OVERLINED = Select_Graphic_Rendition(53)
-    NOT_OVERLINED = Select_Graphic_Rendition(55)
-    SUPERSCRIPT = Select_Graphic_Rendition(73)
-    SUBSCRIPT = Select_Graphic_Rendition(74)
-    NEITHER_SUPERSCRIPT_NOR_SUBSCRIPT = Select_Graphic_Rendition(75)
+    RESET_ALL = select_graphic_rendition(0)
+    BOLD = select_graphic_rendition(1)
+    DIM = select_graphic_rendition(2)
+    ITALIC = select_graphic_rendition(3)
+    UNDERLINED = select_graphic_rendition(4)
+    CORSSED_OUT = select_graphic_rendition(9)
+    NORMAL = NOT_BOLD = select_graphic_rendition(22)
+    NOT_ITALIC = NOT_BLACKLETTER = select_graphic_rendition(23)
+    DOUBLY_UNDERLINED = select_graphic_rendition(21)
+    NOT_UNDERLINED = select_graphic_rendition(24)
+    NOT_CORSSED_OUT = select_graphic_rendition(29)
+    OVERLINED = select_graphic_rendition(53)
+    NOT_OVERLINED = select_graphic_rendition(55)
+    SUPERSCRIPT = select_graphic_rendition(73)
+    SUBSCRIPT = select_graphic_rendition(74)
+    NEITHER_SUPERSCRIPT_NOR_SUBSCRIPT = select_graphic_rendition(75)
 
     def underline_rgb(self, red: int = 0, green: int = 0, blue: int = 0):
         """Will underline with the specified color.
@@ -384,89 +384,112 @@ class Styling:
             raise ValueError(
                 "blue needs to be an integer from 0 to 255 including both end points."
             )
-        return Select_Graphic_Rendition(f"58;2;{red};{green};{blue}")
+        return select_graphic_rendition(f"58;2;{red};{green};{blue}")
 
 
 class TerminalActions:
-    Cursor_Up = "\033[A"
+    cursor_up = "\033[A"
     """Moves the cursor 1 cell in the given direction. If the cursor is already at the edge of the screen, this has no effect."""
 
-    Cursor_Down = "\033[B"
+    cursor_down = "\033[B"
     """Moves the cursor 1 cell in the given direction. If the cursor is already at the edge of the screen, this has no effect."""
 
-    Cursor_Forward = "\033[C"
+    cursor_forward = "\033[C"
     """Moves the cursor 1 cell in the given direction. If the cursor is already at the edge of the screen, this has no effect."""
 
-    Cursor_Back = "\033[D"
+    cursor_back = "\033[D"
     """Moves the cursor 1 cell in the given direction. If the cursor is already at the edge of the screen, this has no effect."""
 
-    Cursor_Next_Line = "\033[E"
+    cursor_next_line = "\033[E"
     """Moves cursor to beginning of the line 1 line down. (not ANSI.SYS)"""
 
-    Cursor_Previous_Line = "\033[F"
+    cursor_previous_line = "\033[F"
     """Moves cursor to beginning of the line 1 line up. (not ANSI.SYS)"""
 
-    Scroll_Up = "\033[S"
+    scroll_up = "\033[S"
     """Scroll whole page up by 1 line. New lines are added at the bottom. (not ANSI.SYS)"""
 
-    Scroll_Down = "\033[T"
+    scroll_down = "\033[T"
     """Scroll whole page down by 1 line. New lines are added at the top. (not ANSI.SYS)"""
 
-    def Cursor_Horizontal_Absolute(self, n=1) -> str:
+    def cursor_horizontal_absolute(self, n=1) -> str:
         """Moves the cursor to column n (default 1). (not ANSI.SYS)"""
         return f"\033[{n}G"
 
-    def Cursor_Position(self, n=1, m=1) -> str:
+    def cursor_position(self, n=1, m=1) -> str:
         """Moves the cursor to row n, column m. The values are 1-based, and default to 1 (top left corner) if omitted. A sequence such as CSI ;5H is a synonym for CSI 1;5H as well as CSI 17;H is the same as CSI 17H and CSI 17;1H"""
         return f"\033[{n};{m}H"
 
-    def Erase_in_Display(self, n=0) -> str:
+    def erase_in_display(self, n=0) -> str:
         """Clears part of the screen. If n is 0 (or missing), clear from cursor to end of screen. If n is 1, clear from cursor to beginning of the screen. If n is 2, clear entire screen (and moves cursor to upper left on DOS ANSI.SYS). If n is 3, clear entire screen and delete all lines saved in the scrollback buffer (this feature was added for xterm and is supported by other terminal applications)."""
         return f"\033[{n}J"
 
-    def Erase_in_Line(self, n=0) -> str:
+    def erase_in_line(self, n=0) -> str:
         """Erases part of the line. If n is 0 (or missing), clear from cursor to the end of the line. If n is 1, clear from cursor to beginning of the line. If n is 2, clear entire line. Cursor position does not change."""
         return f"\033[{n}K"
 
-    def Horizontal_Vertical_Position(self, n, m) -> str:
+    def horizontal_vertical_position(self, n, m) -> str:
         """Same as CUP, but counts as a format effector function (like CR or LF) rather than an editor function (like CUD or CNL). This can lead to different handling in certain terminal modes."""
         return f"\033[{n};{m}f"
 
-    def SGR_Reset(self) -> str:
+    def sgr_reset(self) -> str:
         """Resets colors and style of the characters following this code."""
         return f"\033[{0}m"
 
-    def Save_Current_Cursor_Position(self) -> str:
+    def save_current_cursor_position(self) -> str:
         """Saves the cursor position/state in SCO console mode. In vertical split screen mode, instead used to set (as CSI n ; n s) or reset left and right margins."""
         return f"\033[s"
 
-    def Restore_Saved_Cursor_Position(self) -> str:
+    def restore_saved_cursor_position(self) -> str:
         """Restores the cursor position/state in SCO console mode."""
         return f"\033[u"
 
-    def Show_Cursor(self) -> str:
+    def show_cursor(self) -> str:
         """Shows the cursor, from the VT220."""
         return f"\033[?25h"
+    
+    def show_cursor_action(self) -> None:
+        """Shows the cursor, from the VT220."""
+        colored_print(f"\033[?25h")
 
-    def Hide_Cursor(self) -> str:
+    def hide_cursor(self) -> str:
         """Hides the cursor."""
         return f"\033[?25l"
 
-    def Undo_Line(self):
+    def hide_cursor_action(self) -> None:
+        """Hides the cursor."""
+        colored_print(f"\033[?25l")
+
+    def undo_line(self):
         """Goes one line up and clears the line."""
-        colored_print(TermAct.Cursor_Previous_Line + TermAct.Erase_in_Line(), end="")
+        colored_print(TermAct.cursor_previous_line + TermAct.erase_in_line(), end="")
 
-    def Clear_Current_Line(self):
+    def Erase_in_Display(self):
         """Clears everything in current line."""
-        colored_print(self.Cursor_Horizontal_Absolute() + self.Erase_in_Line(), end="")
+        return self.cursor_horizontal_absolute() + self.erase_in_line()
 
-    def clear_Terminal(self):
+    def clear_current_line_action(self):
+        """Clears everything in current line."""
+        colored_print(self.cursor_horizontal_absolute() + self.erase_in_line(), end="")
+
+    def clear_terminal(self):
         """Clears your terminal with either cls or clear"""
         os.system("cls" if os.name == "nt" else "clear")
 
-    def clear_Console(self):
-        """Alias for clear_Terminal"""
-        self.clear_Terminal()
+    def clear_console(self):
+        """Alias for clear_terminal"""
+        self.clear_terminal()
+
+    def clear_previous_line(self, amount: int = 1):
+        output = ""
+        for i in range(amount):
+            output += self.cursor_up + self.clear_current_line()
+        return output
+
+    def clear_previous_line_action(self, amount: int = 1):
+        for i in range(amount):
+            print(self.cursor_up, end="")
+            self.clear_current_line()
 
 
 Fore = ForegroundColor()
@@ -484,7 +507,7 @@ def colored_print(*args, end="\n", sep=" "):
             _args.append(a)
         else:
             _args.append(str(a))
-    string = sep.join(_args) + SGR_Reset()
+    string = sep.join(_args) + sgr_reset()
     string += end
     out = sys.stdout
     out.write(string)
@@ -686,7 +709,7 @@ def termact_demo(horses: int = 5, lenght: int = 100):
     from random import randint
     from time import sleep
 
-    print(TermAct.Hide_Cursor(), end="")
+    print(TermAct.hide_cursor(), end="")
     posis = {f"Horse-{i+1}": 0 for i in range(horses)}
     positioning = {f"Horse-{i+1}": 0 for i in range(horses)}
     horses_list = []
@@ -740,7 +763,7 @@ def termact_demo(horses: int = 5, lenght: int = 100):
                     prestr + f"{Fore.rgb(100,100,100)}Finished in {v}th place."
                 )
 
-        print(TermAct.Cursor_Up * horses, end="")
+        print(TermAct.cursor_up * horses, end="")
         for i in strings:
             colored_print(i)
         sleep(0.3)
@@ -748,11 +771,11 @@ def termact_demo(horses: int = 5, lenght: int = 100):
     while not all([n >= (lenght + 1) for n in posis.values()]):
         run_horses_run()
     run_horses_run()
-    print(TermAct.Show_Cursor(), end="")
+    print(TermAct.show_cursor(), end="")
     print(
         """
 With TermAct you can hide you cursor or move the cursor in any direction.
-If you want to erase printed rows, call TermAct.Undo_Line. Perfect to update the progress of multiple tasks in multiple rows.
+If you want to erase printed rows, call TermAct.undo_line. Perfect to update the progress of multiple tasks in multiple rows.
 Sadly it is hard to demonstrate all of it.
     """
     )
@@ -791,7 +814,7 @@ This module allows a wider range of colors ... if your output can display it.
 def reprint_last_line(*args):
     nargs = [str(a) for a in args]
     sargs = " ".join(nargs)
-    colored_print(f"{TermAct.Cursor_Previous_Line}\r{TermAct.Erase_in_Line()}{sargs}")
+    colored_print(f"{TermAct.cursor_previous_line}\r{TermAct.erase_in_line()}{sargs}")
 
 
 if __name__ == "__main__":

@@ -100,51 +100,51 @@ print(Fore.CYAN + Style.DOUBLY_UNDERLINED + "This text is colored cyan and doubl
 
 ## Overview of all the possible terminal actions using **TermAct**:
 - *Parameters*
-    - `TermAct.Cursor_Up`  
+    - `TermAct.cursor_up`  
       Moves the cursor 1 cell in the given direction. If the cursor is already at the edge of the screen, this has no effect.
-    - `TermAct.Cursor_Down`  
+    - `TermAct.cursor_down`  
       Moves the cursor 1 cell in the given direction. If the cursor is already at the edge of the screen, this has no effect.
-    - `TermAct.Cursor_Forward`  
+    - `TermAct.cursor_forward`  
       Moves the cursor 1 cell in the given direction. If the cursor is already at the edge of the screen, this has no effect.
-    - `TermAct.Cursor_Back`  
+    - `TermAct.cursor_back`  
       Moves the cursor 1 cell in the given direction. If the cursor is already at the edge of the screen, this has no effect.
-    - `TermAct.Cursor_Next_Line`  
+    - `TermAct.cursor_next_line`  
       Moves cursor to beginning of the line 1 line down. (not ANSI.SYS)
-    - `TermAct.Cursor_Previous_Line`  
+    - `TermAct.cursor_previous_line`  
       Moves cursor to beginning of the line 1 line up. (not ANSI.SYS)
-    - `TermAct.Scroll_Up`  
+    - `TermAct.scroll_up`  
       Scroll whole page up by 1 line. New lines are added at the bottom. (not ANSI.SYS)
-    - `TermAct.Scroll_Down`  
+    - `TermAct.scroll_down`  
       Scroll whole page down by 1 line. New lines are added at the top. (not ANSI.SYS)
 - *Methods*
-    - `TermAct.Cursor_Horizontal_Absolute(n=1) -> str`  
+    - `TermAct.cursor_horizontal_absolute(n=1) -> str`  
       Moves the cursor to column n (default 1). (not ANSI.SYS)
-    - `TermAct.Cursor_Position(n=1, m=1) -> str`  
+    - `TermAct.cursor_position(n=1, m=1) -> str`  
       Moves the cursor to row n, column m. The values are 1-based, and default to 1 (top left corner) if omitted. A sequence such as CSI ;5H is a synonym for CSI 1;5H as well as CSI 17;H is the same as CSI 17H and CSI 17;1H
-    - `TermAct.Erase_in_Display(n=0) -> str`  
+    - `TermAct.erase_in_display(n=0) -> str`  
       Clears part of the screen. If n is 0 (or missing), clear from cursor to end of screen. If n is 1, clear from cursor to beginning of the screen. If n is 2, clear entire screen (and moves cursor to upper left on DOS ANSI.SYS). If n is 3, clear entire screen and delete all lines saved in the scrollback buffer (this feature was added for xterm and is supported by other terminal applications).
-    - `TermAct.Erase_in_Line(n=0) -> str`  
+    - `TermAct.erase_in_line(n=0) -> str`  
       Erases part of the line. If n is 0 (or missing), clear from cursor to the end of the line. If n is 1, clear from cursor to beginning of the line. If n is 2, clear entire line. Cursor position does not change.
-    - `TermAct.Horizontal_Vertical_Position(n, m) -> str`  
+    - `TermAct.horizontal_vertical_position(n, m) -> str`  
       Same as CUP, but counts as a format effector function (like CR or LF) rather than an editor function (like CUD or CNL). This can lead to different handling in certain terminal modes.
-    - `TermAct.SGR_Reset() -> str`  
+    - `TermAct.sgr_reset() -> str`  
       Resets colors and style of the characters following this code.
-    - `TermAct.Save_Current_Cursor_Position() -> str`  
+    - `TermAct.save_current_cursor_position() -> str`  
       Saves the cursor position/state in SCO console mode. In vertical split screen mode, instead used to set (as CSI n ; n s) or reset left and right margins.
-    - `TermAct.Restore_Saved_Cursor_Position() -> str`  
+    - `TermAct.restore_saved_cursor_position() -> str`  
       Restores the cursor position/state in SCO console mode.
-    - `TermAct.Show_Cursor() -> str`  
+    - `TermAct.show_cursor() -> str`  
       Shows the cursor, from the VT220.
-    - `TermAct.Hide_Cursor() -> str`  
+    - `TermAct.hide_cursor() -> str`  
       Hides the cursor.
-    - `TermAct.Undo_Line()`  
+    - `TermAct.undo_line()`  
       Goes one line up and clears the line.
-    - `TermAct.Clear_Current_Line()`  
+    - `TermAct.clear_current_line()`  
       Clears everything in current line.
-    - `clear_Terminal()`  
+    - `clear_terminal()`  
       Clears your terminal with either cls or clear
-    - `TermAct.clear_Console()`  
-      Alias for clear_Terminal
+    - `TermAct.clear_console()`  
+      Alias for clear_terminal
 
 ## The resetting output function **colored_print**
 - colored_print(*args, end="  n", sep=" ")
