@@ -7,6 +7,7 @@ This has only been tested on Windows.
 - Description
 - Usage
 - Demonstrations
+- Limitations
 
 ## Installation
 Comming soon
@@ -158,3 +159,6 @@ There are 6 demo prints (`foreground_demo`, `background_demo`, `style_demo`, `rg
 Each demo will show the special effects you can create with this package.  
 Here is an image that shows what to expect.
 ![Demo-Screenshot](images/demo_screenshot.png "Demo-Screenshot")
+
+## Limitations
+Some packages like *colorama* and *moviepy* break this package because they manipulate the terminal output, while colorful_terminal does not interfere with other terminal output because the colored_print function always resets the terminal output settings.
