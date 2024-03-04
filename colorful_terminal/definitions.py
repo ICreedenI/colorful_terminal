@@ -450,7 +450,7 @@ class TerminalActions:
     
     def show_cursor_action(self) -> None:
         """Shows the cursor, from the VT220."""
-        colored_print(f"\033[?25h")
+        colored_print(f"\033[?25h", end="")
 
     def hide_cursor(self) -> str:
         """Hides the cursor."""
@@ -458,7 +458,7 @@ class TerminalActions:
 
     def hide_cursor_action(self) -> None:
         """Hides the cursor."""
-        colored_print(f"\033[?25l")
+        colored_print(f"\033[?25l", end="")
 
     def undo_line(self):
         """Goes one line up and clears the line."""
