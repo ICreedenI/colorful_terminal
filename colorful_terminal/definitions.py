@@ -186,6 +186,20 @@ class ForegroundColor:
                 newstring += s
             return newstring
 
+    def color(string: str, color=(255, 255, 255)):
+        """Get a colored string ending with Fore.RESET.
+
+        Args:
+            string (str): Your string
+            color (tuple|str): The color to be used, either (red, green, blue) or a string from Fore.RED / .GREEN / .YELLOW / .BLUE / ...
+        Returns:
+            str: colored string with Fore.RESET ending
+        """
+        if isinstance(color, tuple):
+            return Fore.rgb(*color) + string + Fore.RESET
+        else:
+            return color + string + Fore.RESET
+
 
 class BackroundColor:
     BLACK = select_graphic_rendition(40)
@@ -337,6 +351,20 @@ class BackroundColor:
                 newstring += s
             return newstring
 
+    def color(string: str, color=(255, 255, 255)):
+        """Get a colored string ending with Back.RESET.
+
+        Args:
+            string (str): Your string
+            color (tuple|str): The color to be used, either (red, green, blue) or a string from Back.RED / .GREEN / .YELLOW / .BLUE / ...
+        Returns:
+            str: colored string with Back.RESET ending
+        """
+        if isinstance(color, tuple):
+            return Back.rgb(*color) + string + Back.RESET
+        else:
+            return color + string + Back.RESET
+
 
 class Styling:
     RESET_ALL = select_graphic_rendition(0)
@@ -385,6 +413,17 @@ class Styling:
                 "blue needs to be an integer from 0 to 255 including both end points."
             )
         return select_graphic_rendition(f"58;2;{red};{green};{blue}")
+
+    def underline_color(string: str, rgb=(255, 255, 255)):
+        """Get a colored string ending with Fore.RESET.
+
+        Args:
+            string (str): Your string
+            color (tuple): The color to be used as (red, green, blue).
+        Returns:
+            str: colored string with Fore.RESET ending
+        """
+        return Fore.rgb(*rgb) + string + Fore.RESET
 
 
 class TerminalActions:
