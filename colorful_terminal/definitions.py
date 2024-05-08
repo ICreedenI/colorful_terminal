@@ -186,7 +186,7 @@ class ForegroundColor:
                 newstring += s
             return newstring
 
-    def color(string: str, color=(255, 255, 255)):
+    def color(self, string: str, color=(255, 255, 255)):
         """Get a colored string ending with Fore.RESET.
 
         Args:
@@ -351,7 +351,7 @@ class BackroundColor:
                 newstring += s
             return newstring
 
-    def color(string: str, color=(255, 255, 255)):
+    def color(self, string: str, color=(255, 255, 255)):
         """Get a colored string ending with Back.RESET.
 
         Args:
@@ -414,7 +414,7 @@ class Styling:
             )
         return select_graphic_rendition(f"58;2;{red};{green};{blue}")
 
-    def underline_color(string: str, rgb=(255, 255, 255)):
+    def underline_color(self, string: str, rgb=(255, 255, 255)):
         """Get a colored string ending with Fore.RESET.
 
         Args:
