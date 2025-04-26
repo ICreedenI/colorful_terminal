@@ -11,6 +11,7 @@ from .definitions import (
     rgb_demo,
     rainbow_demo,
     reprint_last_line,
+    PauseFlag,
 )
 
-__version__ = "0.1.6"
+__version__ = "0.1.7"

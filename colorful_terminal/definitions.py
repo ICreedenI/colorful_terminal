@@ -1,6 +1,8 @@
 # get more infos about ANSI escape codes at: https://en.wikipedia.org/wiki/ANSI_escape_code
 import os
 import sys
+import threading
+import time
 
 
 def select_graphic_rendition(code=0):
@@ -486,7 +488,7 @@ class TerminalActions:
     def show_cursor(self) -> str:
         """Shows the cursor, from the VT220."""
         return f"\033[?25h"
-    
+
     def show_cursor_action(self) -> None:
         """Shows the cursor, from the VT220."""
         colored_print(f"\033[?25h", end="")
@@ -827,10 +829,10 @@ def demo_print():
     print(
         """
 Similar to colorama you can import and use Fore, Back, Style in your string as well as TermAct.
-But you should use colored_print instead of print to automatically reset your modifications. 
+But you should use colored_print instead of print to automatically reset your modifications.
 Else you need to either individually change stuff back to the normal state with Fore/Back.RESET or (much simpler) use Style.RESET_ALL to get back to your normal prints.
 
-This module allows a wider range of colors ... if your output can display it. 
+This module allows a wider range of colors ... if your output can display it.
     """
     )
 
@@ -854,6 +856,53 @@ def reprint_last_line(*args):
     nargs = [str(a) for a in args]
     sargs = " ".join(nargs)
     colored_print(f"{TermAct.cursor_previous_line}\r{TermAct.erase_in_line()}{sargs}")
+
+
+class PauseFlag:
+    """with PauseFlag("Currently paused") as pf:..."""
+
+    def __init__(self, message="Currently paused"):
+        self.message = message
+        self._stop_event = threading.Event()
+        self._thread = threading.Thread(target=self._animate)
+        self._lock = threading.Lock()
+
+    def __enter__(self):
+        TermAct.hide_cursor_action()
+        self._stop_event.clear()
+        self._thread.start()
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self._stop_event.set()
+        self._thread.join()
+        sys.stdout.write(f"\r{TermAct.erase_in_line()}")
+        TermAct.show_cursor_action()
+
+    def _animate(self):
+        animation = [".", "..", "...", ""]
+        index = 0
+        while not self._stop_event.is_set():
+            with self._lock:
+                output = f"{self.message}{animation[index % len(animation)]}"
+                sys.stdout.write(f"\r{TermAct.erase_in_line()}{output}")
+                index += 1
+            time.sleep(0.5)
+
+
+#
+#  from time import sleep
+
+
+# def is_paused():
+#     # Replace with your actual condition
+#     return True
+
+# with PauseFlag("Currently paused") as pf:
+#     for _ in range(10):
+#         if not is_paused():
+#             break
+#         sleep(1)
 
 
 if __name__ == "__main__":
